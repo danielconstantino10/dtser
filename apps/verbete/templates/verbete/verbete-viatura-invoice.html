@@ -1,0 +1,147 @@
+{% block title %} {{titulo}}{% endblock %}
+{% load static %}
+{% block body %}
+<html xml:lang="pt-br" lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="{% static 'verbete/css/bootstrap.css' %}">
+    <style>
+      .capa_livrete{
+        background-color: #FEE4E0;
+      } 
+
+      page {
+        background: white;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 0.5cm;
+        box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+      }
+
+      page[size="A5"] {
+        width: 10.7cm;
+        height: 16.6cm;
+      }
+      page[size="A5"][layout="landscape"] {
+        width: 16.6cm;
+        height: 10.7cm;  
+      }
+
+      page[size="A6"] {
+        width: 15.2cm;
+        height: 15.5cm;
+      }
+      
+      page[size="A6"][layout="landscape"] {
+        width: 15.5cm;
+        height: 11.2cm;  
+        border-radius: none;
+      }
+
+      @media print {
+        body, page {
+          margin: 0;
+          box-shadow: 0;
+        }
+      }
+
+    .maiuculo{text-transform: uppercase;}
+    .t0{font-size: 6px;}
+    .t1{font-size: 7px;}
+    .t2{font-size: 8px;}
+    .t3{font-size: 9px;}
+    .t4{font-size: 14px;}
+    .t5{font-size: 19px; }
+    .m{margin-top: 0; margin-bottom: 0;}
+    .m1{margin: 1px;}
+    .m2{margin-top: 1px; margin-bottom: 2px;}
+    .m3{margin: 2px;}
+    .m4{margin-bottom: 1em; }
+    .m5{margin-bottom: 3px;}
+    .m6{  padding-right: 15px; padding-left: 15px; 
+        margin-right: auto; margin-left: auto;}
+    .m7{  padding-right: 15px; padding-left: 15px; 
+        margin-right: auto; margin-left: auto;}
+    .m8{margin-left: -35px;}
+    .m9{margin-bottom: 11px;}
+    .m{margin-right: -2px; margin-left: -12px;}
+
+    .b1{border: 2px solid #000;}
+    .b2{border-right: 2px solid #000;}
+    .tb1 {border: none;}
+
+    .corpo_verb p{margin-bottom: 5px;font-size: 14px}
+    .assinatura{margin-right: -19em; margin-top: 1em;}
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 3px;}
+
+    img .codebarra{
+       width:80px !important;
+        max-height: 40px;;
+    }
+
+    .bground{
+      background: url("{% static 'verbete/logosPN2.png' %}") no-repeat center;
+    }
+  </style>
+</head>
+<body>
+  <div class="row">
+    <div class="col-md-12">
+      <section class="my-4 py-4">
+    <!-- 1 Parte externa    -->
+    <page size="A6" layout="landscape" class="capa_livrete">
+        <section class="row m6 py-3 ">
+            <div class="col-md-12 m7">
+              <table class="tb1">
+                  <tr class="cabecalho" style="background:#fff;">
+                    <td>
+                      <div class="text-center">
+                        <img src="{% static 'verbete/RNA.jpg' %}" class="img-fluid"  width="45px" height="45px">
+                        <p class="t0 maiuculo m1">República de Angola</p>
+                        <p style="margin: -2px 0" class="t1">______<span>&sext;</span>______</p>
+                        <p class="t1 m1 maiuculo"> <strong>Ministério do Interior</strong> </p>
+                        <h6 class="maiuculo t1 m1"> <strong>Polícia Nacional</strong></h6>
+                        <p class="maiuculo t2 m1">
+                        Direcção Nacional de Viação e Trânsito</p>
+                      </div>
+                    </td>
+                     <td ><p class="text-center" style="margin: 0 1.7em; ">VERBETE <br> PROVISÓRIO</p></td>
+                      <td >
+                        <div class="text-center">
+                          <img src="{{verbete.qr_code.url}}" class="img-fluid mx-2"  width="60px" height="60px">
+                          <p class="maiuculo t2 m1">
+                          </p>
+                        </div>
+                      </td>
+                  </tr>
+              </table>
+
+              <div class="corpo_verb mt-4 pt-4 bground">
+                <div class="">
+                  <p><span class="maiuculo"> Este verbete substitui o Livrete, até </span> {{verbete.data_validade|date:'d'}} / {{verbete.data_validade|date:'m'}} / {{verbete.data_validade|date:'Y'}} </p> 
+                  <p> Matrícula {{verbete.registo_inicial.matricula}}  Tipo {{verbete.registo_inicial.get_tipo_veiculo_display}}</p> 
+                  <p> Marca {{verbete.registo_inicial.modelo.marca}}  Cor {{verbete.registo_inicial.cor}}  Lotação {{verbete.registo_inicial.lotacao}} lugares</p> 
+                  <p> N.º do Quadro {{verbete.registo_inicial.numero_quadro}} N.º do Motor {{verbete.registo_inicial.numero_quadro}}</p> 
+                  <p> Propriedade de {{verbete.registo_inicial.proprietario.pessoa.nome}} B.I. N.º {{verbete.registo_inicial.proprietario.pessoa.numero_identificacao}}</p>        
+                </div>
+                <div class="text-center mt-4">
+                  <p> Luanda, <span class="">{{verbete.data_emissao|date:'d'}} de {{verbete.data_emissao|date:'M'}} de {{verbete.data_emissao|date:'Y'}}</p>        
+                </div>
+                <div class="assinatura">
+                  <div class="text-center">
+                    <span class="">_______________________</p>        
+                    <p>O Chefe
+                  </div>
+                </div>
+              </div>
+          </section>
+    </page>
+  </section>
+
+            
+            </div>
+        </div>
+{% endblock body %}

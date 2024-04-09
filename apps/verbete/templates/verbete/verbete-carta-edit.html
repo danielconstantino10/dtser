@@ -1,0 +1,77 @@
+{% extends 'shared/_layout_backend.html' %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title float-right">Verbete | Carta | Editar  </h4>
+            </div>
+        </div>
+           {% if messages %}
+            <div class="messages">
+                 {% for message in messages %}
+                  {% if message.tags == "success" %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                         {{ message }} Clica no número <a href="#" class="alert-link"> {{codigo_verbete}} </a> para poder visualizar o Verbete
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+                        </div>
+                    {% endif %}
+                     {% if message.tags == "info" %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+                        </div>
+                    {% endif %}
+                 {% endfor %}
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-box">
+                    <h4 class="card-title">Formulário para editar os dados do verbete de carta</h4>
+                    <form action="#" method="POST">
+                        {% csrf_token %}
+                        <hr/>
+                
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nº da carta</label>
+                                    {{form.numero_carta}}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Categoria</label>
+                                    {{form.categoria}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Proprietário</label>
+                                    {{form.proprietario}}
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-rounded"> <i class="fa fa-plus"></i> Submeter</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

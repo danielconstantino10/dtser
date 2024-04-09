@@ -1,0 +1,81 @@
+{% extends 'shared/_layout_backend.html' %}
+{% load static %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title float-right">Verbete Carta | Anular </h4>
+            </div>
+        </div>
+          {% if messages %}
+            <div class="messages">
+                 {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ message }}
+                    </div>
+                 {% endfor %}
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-box">
+                    <h4 class="card-title">Tens a certeza que queres eliminar este registo ?</h4>
+
+                       <hr/>
+                          <form action="#" method="POST">
+                    {% csrf_token %}
+
+                        <h5>N.º Carta: {{verbete.mumero_carta}}</h5>
+                        
+                        <h5>Data de emissão: {{verbete.data_emissao}}</h5>
+                       
+                        <h5>Data de validade: {{verbete.data_validade}}</h5>
+
+                        <h5>Categoria: {{verbete.get_categoria_display}}</h5>
+                      
+                        <h5>Proprietário: {{verbete.proprietario}}</h5>
+                   <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                              <button class="btn btn-danger" type="submit">Remover</button>
+                                 </div>
+                          </div>
+                            </div>
+                    </form>
+             
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'backend/assets/js/jquery-3.2.1.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#id_modelo").empty();
+        $("#id_marca").change(function () {
+            var marca_id = $(this).val();
+            $.ajax({
+              url: "get_modelo/",
+              data: {
+                'marca': marca_id
+              },
+              success: function (data) {
+                $("#id_modelo").empty(); 
+                $("#id_modelo").append(
+                    $("<option value='0'></option>").val(null).html("--Selecionar--")
+                );
+                for(var i = 0; i <= data.nome.length - 1; i++)
+                {
+                    $('#id_modelo').append(
+                        $('<option></option>').val(data.id[i]).html(data.nome[i])
+                    );
+                }
+              }
+            });
+        });
+    });
+</script>
+
+{% endblock content %}

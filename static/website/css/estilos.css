@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.cabecalho_index{
+    background: url('../img/white_background.jpg') fixed;
+}
+
+.box_content{
+    /* margin-top: 100px; */
+    /* margin-bottom: 100px; */
+    padding-top: 100px;
+    padding-bottom: 200px;
+}
+
+.cartao div {
+    padding: 5px;
+    /* background-color: #dedede; */
+}
+
+.cartao h3{
+    font-size: 1.5em !important;
+}
+
+.cartao div ul li {
+    display: block;
+}
+
+.cartao img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+}
+
+a{
+    cursor: pointer !important;
+}
+
+.fundo{
+    background-color: #022c56;
+    /* filter: opacity(0.6); */
+}
+
+.redondo{
+    border-radius: 50%;
+}
+
+.sem_borda{
+    border: none;
+}
+
+.sem_espaco{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.borda_baixo{
+    border-bottom: 1px dashed #dedede;
+}
+
+.texto_uppercase{
+    text-transform: uppercase;
+}
+
+.negrito{
+    font-weight: bold;
+}
+
+.texto_5em{
+    font-size: 5em !important;
+}
+
+.texto_4em{
+    font-size: 4em !important;
+}
+
+.texto_3em{
+    font-size: 3em !important;
+}
+
+.texto_2em{
+    font-size: 2em !important;
+}
+
+.page-footer .texto_2em a, li a{
+    transition: 0.3s;
+}
+
+.page-footer .texto_2em a:hover, li a:hover{
+    /* border-bottom: 2px solid #ffffff; */
+    opacity: 0.8;
+}
+
+.espaco{
+    padding: 5px;
+}
+
+.espaco_top{
+    margin-top: 50px;
+}
+
+.espaco_bottom{
+    margin-bottom: 50px;
+}
+
+.noticias_paragrafo{
+    /* white-space: nowrap !important; */
+    /* overflow-x: hidden !important; */
+    /* text-overflow: ellipsis !important; */
+}
+
+.paragrafo{
+    text-align: justify;
+}
+
+.servicos{
+    width: 100px;    
+}
+
+.servicos span{
+    color: #022C56 !important;
+}
+
+.servicos h4{
+    font-size: 1.5em;
+}
+
+.servicos span{
+    transition: 0.3s;
+    font-size: 4em; text-align: center;
+}
+
+.borda{
+    height: 2px;
+    width: 180px;background-color: #222222;
+}
+
+@media screen and (min-width: 200px) {
+    #menu_top {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 761px) {
+    #menu_top {
+        display: block;
+    }
+}

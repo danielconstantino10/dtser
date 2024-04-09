@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- login23:11-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <title>Preclinic - Medical & Hospital - Bootstrap 4 Admin Template</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'backend/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'backend/assets/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'backend/assets/css/style.css' %}">
+    <!--[if lt IE 9]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+    <div class="main-wrapper account-wrapper">
+        <div class="account-page">
+			<div class="account-center">
+				<div class="account-box">
+                    <form  method="POST">
+                    {% csrf_token %}
+						<div class="account-logo">
+                            <a href="#"><img src="{% static 'backend/assets/img/logo-dark.jpg' %}" width="700px" height="600px" alt=""></a>
+                        </div>
+                        {% if form_class.non_field_errors %}
+                           <div class="alert alert-danger" role="alert">
+                            {{ form_class.non_field_errors }}
+                           </div>
+                        {% endif %}
+                        <div class="form-group">
+                            <label>Nome de Usuário</label>
+                            <input type="text" name="username" id="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Palavra-Passe</label>
+                             <input type="password" id="password" name="password" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group text-center">
+                          
+                            <button type="submit" class="btn btn-primary account-btn">Entrar</button>
+                        </div>
+                    </form>
+                </div>
+			</div>
+        </div>
+    </div>
+    <script src="{% static 'backend/assets/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'backend/assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'backend/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'backend/assets/js/app.js' %}"></script>
+</body>
+</html>

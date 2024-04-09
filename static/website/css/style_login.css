@@ -1,0 +1,100 @@
+body{
+    color: #4063ff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.body_banner{
+    /* font-family: 'FontyBOdy'; */
+    background: linear-gradient(to right, #00051d, #022c56);
+}
+
+.bg_login{
+    background-color: #4063ff !important;
+    color: #ffffff;
+}
+
+.titulo_login{
+    color: #00051d !important;
+}
+
+.card_centro{
+    margin-top: 25%;
+    color: #ffffff;
+}
+
+
+.input_style{
+    /* border-top: none;
+    border-left: none;
+    border-right: none; */
+    border: 1px solid #4063ff;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.botao{
+    /* border-radius: 20px !important; */
+    background-color: #4063ff;
+    color: #ffffff;
+}
+
+.fundo_white{
+    background-color: #ffffff !important;
+    height: 100vh;
+}
+
+.fundo_white h3{
+    color: #00051d;
+}
+
+@media screen and (min-width: 200px){
+    body{
+        overflow: hidden;
+    }
+.body_banner{
+    size: 100%;
+}
+.card_centro{
+    /* width: 100%;
+    margin-left: 0;
+    padding: 30px; */
+    display: none;
+    box-shadow: none;
+    overflow: scroll;
+}
+.fundo_white{
+    height: 100vh;
+}
+
+.btn_voltar a{
+    display: none;
+}
+}
+
+@media screen and (min-width: 760px){
+
+    .body_banner{
+        background-size: 100%;
+    }
+    .card_centro{
+        width: 500px;
+        margin-left: 25%;
+        display: block !important;
+        overflow: hidden;
+    }
+
+    .btn_voltar a{
+        display: block;
+        position: relative;
+        top: 20px;
+        right: -13px;
+    }
+
+    .fundo_white{
+        height: 100vh;
+    }
+
+}

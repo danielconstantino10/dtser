@@ -1,0 +1,53 @@
+{% extends 'shared/_layout_backend.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-5 col-5">
+                    <h4 class="page-title"></h4>
+                </div>
+                
+                <div class="col-sm-7 col-7 text-right m-b-30">
+                    <a href="{% url 'accounts:user_add' %}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Usuário</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <div class="card-block">
+                            <h6 class="card-title text-bold">Usuários</h6>
+							<div class="table-responsive">
+                                <table class="datatable table table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Nº Identificação</th>
+                                            <th>Perfil</th>
+                                            <th>Data Registo</th>
+                                            <th>Acção</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for user in users %}
+                                        <tr>
+                                            <td>{{user.pessoa.nome}}</td>
+                                            <td>{{user.pessoa.numero_identificacao}}</td>
+                                            <td>{{user.get_department_display}}</td>
+                                            <td>{{user.date_joined|date:'d-m-Y'}}</td>
+                                             <td>
+                                                <a href=""><i class="fa fa-eye"></i> </a> |
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+{% endblock content %}

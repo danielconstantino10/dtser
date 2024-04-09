@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Livrete de Manifesto de Armas</title>
+<style>
+
+.capa_livrete{background-color: #c4d1de;} 
+
+page {
+  background: white;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+
+page[size="A5"] {
+  width: 10.7cm;
+  height: 16.6cm;
+}
+page[size="A5"][layout="landscape"] {
+  width: 16.6cm;
+  height: 10.7cm;  
+}
+
+page[size="A6"] {
+  width: 15.2cm;
+  height: 15.5cm;
+}
+page[size="A6"][layout="landscape"] {
+  width: 15.5cm;
+  height: 11.2cm;  
+  border-radius: none;
+
+}
+
+@media print {
+  body, page {
+    margin: 0;
+    box-shadow: 0;
+  }
+}
+
+.maiuculo{text-transform: uppercase;}
+.t0{font-size: 6px;}
+.t1{font-size: 7px;}
+.t2{font-size: 8px;}
+.t3{font-size: 9px;}
+.t4{font-size: 14px;}
+.t5{font-size: 19px; }
+.m{margin-top: 0; margin-bottom: 0;}
+.m1{margin: 1px;}
+.m2{margin-top: 1px; margin-bottom: 2px;}
+.m3{margin: 2px;}
+.m4{margin-bottom: 1em; }
+.m5{margin-bottom: 3px;}
+.m6{  padding-right: 15px; padding-left: 15px; 
+    margin-right: auto; margin-left: auto;}
+.m7{  padding-right: 15px; padding-left: 15px; 
+    margin-right: auto; margin-left: auto;}
+.m8{margin-left: -35px;}
+.m9{margin-bottom: 11px;}
+.m{margin-right: -2px; margin-left: -12px;}
+
+.b1{border: 2px solid #000;}
+.b2{border-right: 2px solid #000;}
+.tb1 {border: none;}
+
+.corpo_verb p{margin-bottom: 5px;font-size: 14px}
+.assinatura{margin-right: -19em; margin-top: 1em;}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 3px;}
+
+img .codebarra{
+   width:80px !important;
+    max-height: 40px;;
+}
+
+.bground{
+  background: url("logosPN2.png") no-repeat center;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<section class="my-4 py-4">
+
+    <!-- 1 Parte externa    -->
+    <page size="A6" layout="landscape" class="capa_livrete">
+        <section class="row m6 py-3 ">
+            <div class="col-md-12 m7 bground">
+              <table class="tb1">
+                  <tr class="cabecalho" style="background:#fff;">
+                    <td>
+                      <div class="text-center">
+                        <img src="RNA.jpg" class="img-fluid  "  width="45px" height="45px">
+                        <p class="t0 maiuculo m1">República de Angola</p>
+                        <p style="margin: -2px 0" class="t1">______<span>&sext;</span>______</p>
+                        <p class="t1 m1 maiuculo"> <strong>Ministério do Interior</strong> </p>
+                        <h6 class="maiuculo t1 m1"> <strong>Polícia Nacional</strong></h6>
+                        <p class="maiuculo t2 m1">
+                        Direcção Nacional de Viação e Trânsito</p>
+                      </div>
+                    </td>
+                     <td ><p class="text-center" style="margin: 0 1.7em; ">VERBETE <br> PROVISÓRIO</p></td>
+                      <td >
+                        <div class="text-center">
+                          <img src="2.jpg" class="img-fluid mx-2"  width="140px" height="60px">
+                          <p class="maiuculo t2 m1">
+                            LD-272393-DNVT-19
+                          </p>
+                        </div>
+                      </td>
+                  </tr>
+              </table>
+
+              <div class="corpo_verb mt-4 pt-4">
+                <div class="">
+                  <p> Este verbete substitui a <span class="maiuculo"> Carta de Condução Nº </span> _______________</p> 
+                  <p> que é titular o Senhor__________________________________________</p> 
+                  <p> Titular do Bilhete de Identidade Nº._________________________________</p> 
+                  <p> que autoriza a conduzir viaturas automóveis do tipo _______________</p> 
+                  <p> sendo válido até_______de_____________de 20____</p>        
+                </div>
+                <div class="text-center mt-4">
+                  <p> <span class="">_____________,_______de_____________de 20____</p>        
+                </div>
+                <div class="assinatura">
+                  <div class="text-center">
+                    <span class="">_______________________</p>        
+                    <p>O Chefe
+                  </div>
+                </div>
+              </div>
+          </section>
+    </page>
+
+
+</section>
+
+</body>
+</html>
+

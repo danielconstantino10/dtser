@@ -1,0 +1,60 @@
+{% extends 'shared/_layout_backend.html' %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title float-right">Marca | Adicionar </h4>
+            </div>
+        </div>
+           {% if messages %}
+            <div class="messages">
+                 {% for message in messages %}
+                      {% if message.tags == "error" %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    	                		<span aria-hidden="true">&times;</span>
+	    	                	</button>
+                            </div>
+                        {% endif %}
+                 {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-box">
+                    <h4 class="card-title">Formulário</h4>
+                    <form action="#" method="POST">
+                    {% csrf_token %}
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Obs</label>
+                                    {{form.obs}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Adicionar</button>   
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+ </div>             
+{% endblock content %}

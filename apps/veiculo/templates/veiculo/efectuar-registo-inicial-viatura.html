@@ -1,0 +1,133 @@
+{% extends 'shared/_layout_backend.html' %}
+{% load static %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title float-right">Proprietário | Veiculos | Efectuar Registo Inicial </h4>
+            </div>
+        </div>
+          {% if messages %}
+            <div class="messages">
+                 {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ message }}
+                    </div>
+                 {% endfor %}
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-box">
+                    <h4 class="card-title">Formulário para efectuar o registo inicial de veiculo</h4>
+                    <form action="#" method="POST">
+                    {% csrf_token %}
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nº do motor</label>
+                                    {{form.numero_motor}}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nº do quadro</label>
+                                    {{form.numero_quadro}}
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nº da matricula</label>
+                                    {{form.matricula}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nº de lotação</label>
+                                    {{form.lotacao}}
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Marca</label>
+                                    {{form.marca}} 	
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Modelo</label>
+                                    {{form.modelo}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Tipo de veiculo</label>
+                                    {{form.tipo_veiculo}}
+                                </div>
+                            </div>                           
+                           <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Cor</label>
+                                    {{form.cor}}
+                                </div>
+                            </div>                            
+                        </div>
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-rounded"> <i class="fa fa-plus"></i> Gravar</button>
+                                    <a href="{% url 'veiculo:proprietario_viatura_details' key %}" class="btn btn-secondary btn-rounded"><i class="fa fa-list"></i> Visualizar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'backend/assets/js/jquery-3.2.1.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+        $("#id_modelo").empty();
+        $("#id_marca").change(function () {
+            var marca_id = $(this).val();
+            $.ajax({
+              url: "get_modelo/",
+              data: {
+                'marca': marca_id
+              },
+              success: function (data) {
+                $("#id_modelo").empty(); 
+                $("#id_modelo").append(
+                    $("<option value='0'></option>").val(null).html("--Selecionar--")
+                );
+                for(var i = 0; i <= data.nome.length - 1; i++)
+                {
+                    $('#id_modelo').append(
+                        $('<option></option>').val(data.id[i]).html(data.nome[i])
+                    );
+                }
+              }
+            });
+        });
+    });
+</script>
+
+{% endblock content %}

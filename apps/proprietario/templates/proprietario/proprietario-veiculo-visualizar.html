@@ -1,0 +1,74 @@
+{% extends 'shared/_layout_backend.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-5 col-5">
+                    <h4 class="page-title"></h4>
+                </div>
+                <div class="col-sm-7 col-7 text-right m-b-30">
+                    <a href="{% url 'proprietario:proprietario_veiculo_add' %}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Proprietário</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <div class="card-block">
+                            <h6 class="card-title text-bold">Proprietários</h6> 
+							<div class="table-responsive">
+								<table id="example" class="datatable table table-stripped ">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Nº Identificação</th>
+                                            <th>Data Registo</th>
+                                            <th>Acção</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for veiculo in object_list %}
+                                        <tr>
+                                            <td>{{veiculo.proprietario__pessoa__nome}}</td>
+                                            <td>{{veiculo.proprietario__pessoa__numero_identificacao}}</td>
+                                            <td>{{veiculo.proprietario__data_registo|date:'d-m-Y'}}</td>
+                                            <td>
+                                                <a href="{% url 'veiculo:proprietario_viatura_details' veiculo.proprietario %}"><i class="fa fa-eye"></i> </a> |
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'backend/assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'backend/assets/js/jquery-ui.min.html' %}"></script>
+    <script>
+        $(document).ready(function exibir_ocultar(){
+            var valor = document.getElementById("tipo_proprietario").value;
+            if(valor == '1'){
+
+                document.getElementById('hidden_juridica').style.display = 'none';
+
+            }
+            else{
+                document.getElementById('hidden_fisica').style.display = 'none';
+            }
+        })
+    </script>
+
+    <script>
+        $(document).ready(function (){
+            $('#add_modal').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+        });
+    </script>
+{% endblock content %}

@@ -1,0 +1,126 @@
+{% extends 'shared/_layout_backend.html' %}
+{% load static %}
+{% block content %}
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="page-title float-right">Condutor | Adicionar | Proprietário </h4>
+                </div>
+            </div>
+            {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                        {% if message.tags == "success" %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    	    	            	<span aria-hidden="true">&times;</span>
+	    	    	            </button>
+                            </div>
+                        {% endif %}
+                        {% if message.tags == "info" %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    	                		<span aria-hidden="true">&times;</span>
+	    	                	</button>
+                            </div>
+                        {% endif %}
+                        {% if message.tags == "error" %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    	                		<span aria-hidden="true">&times;</span>
+	    	                	</button>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-box">
+                        <form action="#" method="POST">
+                            {% csrf_token %} 
+                            <ul class="nav nav-tabs nav-tabs-bottom">
+                                <li class="nav-item"><a class="nav-link active" href="#bottom-tab1" data-toggle="tab">Dados Pessoais</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-toggle="tab">Dados Carta</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane show active" id="bottom-tab1">
+                                    <div class="col-md-12">                   
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Nome</label>
+                                                    {{form_pessoa.nome}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Nº Identificação</label>
+                                                    {{form_pessoa.numero_identificacao}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">  
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Data de nascimento</label>
+                                                    {{form_pessoa_fisica.data_nascimento}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="bottom-tab2">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Nº da Carta</label>
+                                                    {{form_verbete.numero_carta}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Categoria</label>
+                                                    {{form_verbete.categoria}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr/>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-primary btn-rounded"> <i class="fa fa-plus"></i> Adicionar</button>
+                                        <a href="{% url 'proprietario:proprietario_carta_visualizar' %}" class="btn btn-secondary btn-rounded"><i class="fa fa-list"></i> Visualizar</a>
+                                    </div>
+                                </div>        
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'backend/assets/js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'backend/assets/js/jquery-ui.min.html' %}"></script>
+    <script>
+        $(document).ready(function exibir_ocultar(){
+            var valor = document.getElementById("tipo_proprietario").value;
+            if(valor == '1'){
+
+                document.getElementById('hidden_juridica').style.display = 'none';
+
+            }
+            else{
+                document.getElementById('hidden_fisica').style.display = 'none';
+            }
+        })
+    </script>
+{% endblock content %}

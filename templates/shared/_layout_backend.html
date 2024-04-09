@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'backend/assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'backend/assets/css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/buttons.dataTables.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'backend/assets/css/style.css' %}">
+
+
+    <link href="{% static 'css/select2.min.css' %}" type="text/css" media="screen" rel="stylesheet" />
+
+<style>
+ .Div1,.Div2{display:none;}
+</style>
+</head>
+
+<body>
+    <div class="main-wrapper">
+    {% if user.is_authenticated %} 
+        <div class="header">
+			<div class="header-left">
+				<a href="{% url 'administration:index' %}" class="logo">
+					<img src="assets/img/logo.png" width="35" height="35" alt=""> <span>DTSER</span>
+				</a>
+			</div>
+			<a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+            <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
+            <ul class="nav user-menu float-right">          
+                <li class="nav-item dropdown has-arrow">
+                    <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
+                        <span class="user-img">
+							<img class="rounded-circle" src="{% static 'backend/assets/img/user.jpg' %} " width="24" alt="Admin">
+							<span class="status online"></span>
+						</span>
+						<span>{{request.user.username}} {% if request.user.department == "2"  %}(Inspector){%endif%} {% if request.user.department == "1" %}(Admin){%endif%}</span>
+                    </a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="profile.html">Meu Perfil</a>
+						<a class="dropdown-item" href="edit-profile.html">Editar Perfil</a>
+						<a class="dropdown-item" href="{% url 'accounts:sign_out' %}">Sair</a>
+					</div>
+                </li>
+            </ul>
+            <div class="dropdown mobile-user-menu float-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="profile.html">Meu Perfil</a>
+                    <a class="dropdown-item" href="edit-profile.html">Editar Perfil</a>
+                    <a class="dropdown-item" href="{% url 'accounts:sign_out' %}">Sair</a>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">
+                    <ul>
+                        <li class="menu-title">Menú</li>
+	                        <li>
+							    <a href="{% url 'proprietario:proprietario_veiculo_visualizar' %}"><i class="fa fa-car"></i> <span> Veiculo </span></a>
+						    </li>
+						    <li>
+							    <a href="{% url 'proprietario:proprietario_carta_visualizar' %}"><i class="fa fa-user"></i> <span> Condutor </span> </a>
+						    </li>
+                            {% if request.user.department == "1" or request.user.department == "3"   %}
+                            <li>
+							    <a href="{% url 'accounts:user_list' %}"><i class="fa fa-users"></i> <span> Gestão de Usuários </span> </a>
+						    </li>
+                            {% endif %}
+                            <li class="submenu">
+							    <a href="#"><i class="fa fa-bars"></i> <span> Parametrização </span> <span class="menu-arrow"></span></a>
+							    <ul style="display: none;">
+							        <li><a href="{% url 'veiculo:marca_add' %}">Marca </a></li>
+                                    <li><a href="{% url 'veiculo:cor_add' %}">Cor</a></li>	
+                                    <li><a href="{% url 'administration:startup_view' %}">Cor</a></li>						
+							    </ul>                         
+						    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% block content %}
+
+    {% endblock content %}
+    {% endif %}
+    </div>
+    <div class="sidebar-overlay" data-reff=""></div>
+
+ 
+
+
+
+
+
+
+    <script src="{% static 'backend/assets/js/jquery-3.2.1.min.js' %}"></script>
+	  <script src="{% static 'backend/assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'backend/assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'backend/assets/js/jquery.slimscroll.js' %}"></script>
+    <script src="{% static 'backend/assets/js/app.js' %}"></script>
+        <script src="{% static 'backend/assets/js/select2.min.js' %}"></script>
+    <script src="{% static 'backend/assets/js/moment.min.js' %}"></script>
+    <script src="{% static 'backend/assets/js/jquery-ui.min.html' %}"></script>
+    <script src="{% static 'backend/assets/js/Chart.bundle.js' %}"></script>
+    <script src="{% static 'backend/assets/js/chart.js' %}"></script>
+    <script src="{% static 'backend/assets/js/bootstrap-datetimepicker.min.js' %}"></script>
+
+
+    <script type="text/javascript" src="{% static 'js/select2/select2.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/select2/pt-BR.js' %}"></script>
+    <script type="text/javascript" src="{% static 'django_select2/django_select2.js' %}"></script>
+
+    <script src="{% static 'wizard/wizard.js' %}"></script>
+    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'js/dataTables.buttons.min.js' %}"></script>
+    <script>
+  
+ 
+  var table = $('#example').DataTable();
+  
+</script>
+
+</body>
+</html>

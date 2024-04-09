@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Polícia Nacional</title>
+    <link rel="stylesheet" href="{% static 'website/css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'website/fontawesome/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'website/icomoon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/estilos.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/contactos.css' %}">
+    <link rel="stylesheet" href="{% static 'website/css/servicos_style.css' %}">
+    <link rel="icon" type="icon" href="{% static 'website/img/logo_login.jpeg' %}">
+</head>
+<body>
+    <div class="cabecalho_index">
+
+        <div class="navbar-fixed hide-on-med-and-up">
+            <nav class="blue z-depth-0">
+                <div class="nav-wrapper container">
+                    <a href="" class="brand-logo white-text"></a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger white-text"><i class="icon-menu"></i></a>
+                    <ul class="">
+                        <li><a href="" class="white-text accent-3"><i class="fa fa-home"></i></a></li>
+                        <li><a href="" class="white-text accent-3"><i class="fa fa-envelope"></i></a></li>
+                        <li><a href="" class="white-text"><i class="fa fa-user-lock"></i></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="sidenav" id="mobile-demo">
+            <li><a href="index">Página inicial</a></li>
+            <li><a href="">Serviços</a></li>
+            <li><a href="">Sobre nós</a></li>
+            <li><a href="">Notícias</a></li>
+            <li><a href="">Estatística</a></li>
+            <li><a href="">Contacte-nos</a></li>
+            <li><a href="">Entrar</a></li>
+        </ul>
+
+        <nav class="fundo z-depth-0">
+            <div class="nav-wrapper container">
+                <a href="" class="brand-logo white-text">DTSER</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="{% url 'website:home' %}" class="white-text">Inicio</a></li>
+                    <li><a href="" class="white-text">Serviços</a></li>
+                    <li><a href="{% url 'website:about' %}" class="white-text">Sobre nós</a></li>
+                    <li><a href="" class="white-text">Notícias</a></li>
+                    <li><a href="" class="whote-text">Estatística</a></li>
+                    <li><a href="" class="white-text">Contacte-nos</a></li>
+
+                    <li><a href="{% url 'accounts:sign_in' %}" class="white-text"><span class="fa fa-user-lock"></span> Entrar</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="contact-info" id="menu_top">
+            <div class="option">
+                <i class="fas icon-map-marker"></i>
+                <a href="#localizacao_esquadras.html"><div class="text">Luanda à Rua Sezinando Marques nº 1,6</div></a>
+            </div>
+
+            <div class="option">
+                <i class="icon-bank"></i>
+                <a href=""><div class="text">Localização das esquadras</div></a>
+            </div>
+            <div class="option">
+                <i class="fa fa-phone"></i>
+                <div class="text">PN 113 | <span class="fab fa-whatsapp"></span> +244 000 000 000</div>
+            </div>
+
+            <div class="option">
+                <i class="fa fa-globe"></i>
+                <div class="text">www.cgpn.co.ao</div>
+            </div>
+            <div class="option">
+                <i class="fa fa-envelope"></i>
+                <div class="text">policia@policia.co.ao</div>
+            </div>
+        </div>
+
+        <div class="slider">
+            <ul class="slides">
+                <li>
+                    <img src="{% static 'website/img/banner_index.png' %}">
+                    <div class="caption center-align">
+                    </div>
+                </li>
+                <li>
+                    <img src="{% static 'website/img/banner1.png' %}">
+                    <div class="caption center-align">
+                    </div>
+                </li>
+                <li>
+                    <img src="{% static 'website/img/banner2.png' %}">
+                    <div class="caption left-align">
+                    </div>
+                </li>
+                <li>
+                    <img src="{% static 'website/img/banner3.png' %}">
+                    <div class="caption right-align">
+                    </div>
+                </li>
+                <li>
+                    <img src="~/Templates/website/img/banner5.png">
+                    <div class="caption center-align">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    {% block content %}
+    
+    {% endblock content %}
+  <footer class="page-footer blue">
+        <div class="container">
+            <div class="row">
+                <div class="col m4 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="white-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                    <p class="texto_2em">
+                        <a href="" class="white-text"><i class="fa icon-facebook-square"></i> </a>
+                        <a href="" class="white-text"><i class="fa icon-youtube-square"></i></a>
+                    </p>
+                </div>
+
+                <div class="col m4 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="white-text text-lighten-3" href="index.html"><i class="icon-home"></i> Início</a></li>
+                        <li><a class="white-text text-lighten-3" href="servicos.html"><i class="icon-cog"></i> Serviços</a></li>
+                        <li><a class="white-text text-lighten-3" href="#!"><i class="icon-info-circle"></i> Sobre nós</a></li>
+                        <li><a class="white-text text-lighten-3" href="noticias.html"><i class="icon-newspaper-o"></i> Notícias</a></li>
+                        <li><a class="white-text text-lighten-3" href="#!"><i class="icon-bar-chart"></i> Estatísitcas</a></li>
+                        <li><a class="white-text text-lighten-3" href="#!"><i class="icon-envelope"></i> Fale connosco</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+         
+        <div class="footer-copyright">
+            <div class="container">
+                © 2019 CGPNA - Comando Geral da Polícia Nacional de Angola
+                <!-- <a class="white-text text-lighten-4 right" href="#!">More Links</a> -->
+            </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'website/canvasjs/canvasjs.min.js' %}"></script>
+    <script src="{% static 'website/canvasjs/jquery.canvasjs.min.js' %}"></script>
+    <script src="{% static 'website/js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'website/js/materialize.js' %}"></script>
+    <script src="{% static 'website/js/materialize.min.js' %}"></script>
+    <script>
+        // Menu responsivo
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('.slider').slider();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.modal');
+            var instances = M.Modal.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('.modal').modal();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.collapsible.expandable');
+            var instances = M.Collapsible.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('.collapsible').collapsible();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('.scrollspy');
+            var instances = M.ScrollSpy.init(elems, options);
+        });
+
+        // Or with jQuery
+
+        $(document).ready(function () {
+            $('.scrollspy').scrollSpy();
+        });
+    </script>
+</body>
+</html>

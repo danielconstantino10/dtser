@@ -1,0 +1,90 @@
+{% extends 'shared/_layout_backend.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-5 col-5">
+                    <h4 class="page-title"></h4>
+                </div>
+                <div class="col-sm-7 col-7 text-right m-b-30">
+                    <a href="{% url 'proprietario:proprietario_carta_add' %}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Condutor</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <div class="card-block">
+                            <h6 class="card-title text-bold">Proprietários</h6> 
+							<div class="table-responsive">
+								<table class="datatable table table-stripped" id="example">
+                                    <thead>
+                                        <tr>
+                                            <th>Nome</th>
+                                            <th>Nº Identificação</th>
+                                            <th>Nº Carta</th>
+                                            <th>Data Emissão</th>
+                                            <th>Data Validade</th>
+                                            <th>Estado</th>                                          
+                                        
+                                            <th>Acção</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for carta in object_list %}
+                                        <tr>
+                                            <td>{{carta.proprietario.pessoa.nome}}</td>
+                                            <td>{{carta.proprietario.pessoa.numero_identificacao}}</td>
+                                            <td>{{carta.numero_carta}}</td>
+                                            <td>{{carta.data_emissao|date:'d-m-Y'}}</td>
+                                            <td>{{carta.data_validade|date:'d-m-Y'}}</td>
+                                            {% if carta.estado == True %}
+                                                <td><span class="custom-badge status-green">Válido</span></td>
+                                            {% endif %}
+                                            {% if carta.estado == False %}
+                                                <td><span class="custom-badge status-red">Vencido</span></td>
+                                            {% endif %}
+                                           {% if request.user.department == "1" %}
+                                            {% if carta.estado == True %}
+                                                <td> 
+                                                    <a href="{% url 'verbete:verbete_carta_edit' carta.id %}"><i class="fa fa-edit"></i> </a> |
+                                                    <a href="{% url 'verbete:verbete_carta_invoice' carta.id %}"><i class="fa fa-file-pdf-o"></i> </a> |
+                                                </td>
+                                            {% endif %}
+                                            {% if carta.estado == False %}
+                                             <td>
+                                                    <a href="{% url 'verbete:verbete_carta_edit' carta.id %}"><i class="fa fa-edit"></i> </a> |
+                                                    <a href="{% url 'verbete:anular_verbete_carta' carta.id %}"><i class="fa fa-trash"></i> </a> |
+                                                    <a href="{% url 'verbete:verbete_carta_prorrogar' carta.id %}"><i class="fa fa-refresh"></i> </a>
+                                                </td>
+                                            {% endif %}
+                                            {% endif %}
+                                                  {% if request.user.department == "2" %}
+                                            {% if carta.estado == True %}
+                                                <td> 
+                                                    <a href="{% url 'verbete:verbete_carta_edit' carta.id %}"><i class="fa fa-edit" title="Editar"></i> </a> |
+                                                    <a href="{% url 'verbete:verbete_carta_invoice' carta.id %}"><i class="fa fa-file-pdf-o"></i> </a> |
+                                                </td>
+                                            {% endif %}
+                                            {% if carta.estado == False %}
+                                             <td>
+                                                    <a href="{% url 'verbete:verbete_carta_edit' carta.id %}"><i class="fa fa-edit"></i> </a> |
+                                                    <a href="{% url 'verbete:verbete_carta_prorrogar' carta.id %}"><i class="fa fa-refresh"></i> </a>
+                                                </td>
+                                            {% endif %}
+                                            {% endif %}
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+{% endblock %}

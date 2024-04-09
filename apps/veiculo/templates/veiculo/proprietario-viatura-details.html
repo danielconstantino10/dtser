@@ -1,0 +1,70 @@
+{% extends 'shared/_layout_backend.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="page-wrapper">
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-5 col-5">
+                    <h4 class="page-title"></h4>
+                </div>
+                
+                <div class="col-sm-7 col-7 text-right m-b-30">
+                    <a href="{% url 'veiculo:efectuar_registo_inicial_viatura' key %}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Add Veiculo</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <div class="card-block">
+                            <h6 class="card-title text-bold">Veiculos</h6>
+							<div class="table-responsive">
+                                <table id="example" class="datatable table table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>Nº Motor</th>
+                                            <th>Nº Matricula</th>
+                                            <th>Data Emissão</th>
+                                            <th>Data Validade</th>
+                                            <th>Estado</th>
+                                            <th>Acção</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for viatura in viaturas %}
+                                        <tr>
+                                            <td>{{viatura.registo_inicial.numero_motor}}</td>
+                                            <td>{{viatura.registo_inicial.matricula}}</td>
+                                            <td>{{viatura.data_emissao|date:'d-m-Y'}}</td>
+                                            <td>{{viatura.data_validade|date:'d-m-Y'}}</td>
+                                            {% if viatura.estado == True %}
+                                                <td><span class="custom-badge status-green">Válido</span></td>
+                                            {% endif %}
+                                            {% if viatura.estado == False %}
+                                                <td><span class="custom-badge status-red">Vencido</span></td>
+                                            {% endif %}
+                                            {% if request.user.department == "1" %}
+                                            <td>
+                                                <a href="#"><i class="fa fa-edit"></i> </a> |
+                                                <a href="{% url 'veiculo:anular_registo_inicial_viatura' viatura.id %}"><i class="fa fa-trash"></i> </a> |
+                                                <a href="#"><i class="fa fa-eye"></i> </a> 
+                                            </td>
+                                            {% endif %}
+                                            {% if request.user.department == "2" %}
+                                            <td>
+                                                <a href="#"><i class="fa fa-edit"></i> </a> |
+                                                <a href="{% url 'verbete:verbete_viatura_invoice' viatura.id %}"><i class="fa fa-file-pdf-o"></i> </a> 
+                                            </td>
+                                            {% endif %}
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+{% endblock content %}

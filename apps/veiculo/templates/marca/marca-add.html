@@ -1,0 +1,85 @@
+{% extends 'shared/_layout_backend.html' %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title float-right">Marca | Adicionar </h4>
+            </div>
+        </div>
+           {% if messages %}
+            <div class="messages">
+                 {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ message }}
+                    </div>
+                 {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-box">
+                    <h4 class="card-title">Formulário para adicionar Marca</h4>
+                    <form action="#" method="POST">
+                    {% csrf_token %}
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Marca</label>
+                                    {{form.nome}}
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Adicionar</button>   
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+  <div class="row">
+                    <div class="col-sm-12">
+<div class="card-box">
+                                <h6 class="card-title text-bold">Marcas</h6>
+                               
+								<div class="table-responsive">
+									<table class="datatable table table-stripped ">
+                                    <thead>
+                                        <tr>
+                                            <th>Marca</th>
+                                            <th>Acção</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for marca in object_list %}
+                                        <tr>
+                                            <td>{{ marca.nome }}</td>
+                                            <td>
+                                                <a href="" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> Editar</a>
+                                                <a href="{% url 'veiculo:modelo_add'  marca.id %}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> Detalhes</a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+								</div>
+                            </div>
+                     
+                </div>
+    </div>
+</div>
+
+ </div>             
+{% endblock content %}

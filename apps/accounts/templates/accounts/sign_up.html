@@ -1,0 +1,97 @@
+{% extends 'shared/_layout_backend.html' %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title float-right">Gestão de Usuários | Adicionar </h4>
+            </div>
+        </div>
+            {% if messages %}
+            <div class="messages">
+                 {% for message in messages %}
+                    {% if message.tags == "success" %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                         {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+                        </div>
+                    {% endif %}
+                     {% if message.tags == "info" %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+                        </div>
+                    {% endif %}
+                    {% if message.tags == "error" %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+                        </div>
+                    {% endif %}
+                 {% endfor %}
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-box">
+                    <h4 class="card-title">Formulário para registar Verbete de Viatura</h4>
+                    <form action="#" method="POST">
+                        {% csrf_token %}
+                        <hr/>
+                
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label>Nome completo</label>
+                                    {{form_pessoa.nome}}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nº Identificação</label>
+                                    {{form_pessoa.numero_identificacao}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">                          
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Data de nascimento</label>
+                                    {{form_pessoa_fisica.data_nascimento}}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Nome de Usuário</label>
+                                    {{form.username}}
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label>Departamento</label>
+                                    {{form.department}}
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success"> Gravar</button>     
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
